@@ -21,6 +21,8 @@
           <nav class="navbar">
     <a href="index.php">Home</a>
     <a href="view.php">View</a>
+    <a href="signin.php">Sign in</a>
+    <a href="uploadImage.php">Adding image</a>
 </nav>
 
   </header>
@@ -33,7 +35,8 @@
     <input class="controls" type="text" name="specie" id="specie" placeholder="Enter specie of animal">
     <input class="controls" type="text" name="age" id="age" placeholder="Enter age of animal">
     <label for="arriveDate">Enter date of arrival:</label> <input class="controls" type="date" name="arriveDate" id="arriveDate">
-
+    <input class="controls" type="text" name="personName" id="personName" placeholder="Enter your name">
+    <input class="controls" type="password" name="password" id="password" placeholder="Enter your password">
   
     <p>Thank you for your contribution to our zoo</p>
     <input type="submit" class="custom-button" value="Submit">
@@ -50,8 +53,10 @@
               $specie = $_POST['specie'];
               $age = $_POST['age'];
               $arriveDate = $_POST['arriveDate'];
+              $personName = $_POST['personName'];
+              $password = $_POST['password'];
 
-              $res = $database->create($animal, $specie, $age, $arriveDate);
+              $res = $database->create($animal, $specie, $age, $arriveDate, $personName, $password);
 
               if ($res) {
                   echo "<p>Successfully registered new zoo animal</p>";
@@ -60,8 +65,21 @@
               }
           }
           ?>
+
+<h3>Already have an account, then sign in below!</h3>
+    
+    <form method="post" action="validate.php">
+    <input class="controls" type="text" name="personName" id="personName" placeholder="Enter your name">
+    <input class="controls" type="password" name="password" id="password" placeholder="Enter your password">
+    <input type="submit" class="custom-button" value="Submit">
+</form>
+
+
       </div>
       </section>
+
+    
+
 </main>
 
       <br>
@@ -71,3 +89,4 @@
         </footer>  
 </body>
 </html>
+
